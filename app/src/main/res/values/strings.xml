@@ -5,4 +5,5 @@
     <string name="txt_forgotpwd">Forgot Password</string>
     <string name="txt_noaccount">Do not have account?</string>
     <string name="txt_signup">Sing Up</string>
+    <string name="txt_ourApp">Our Application</string>
 </resources>
