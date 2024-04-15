@@ -34,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
     public void Ingresar(View view){
         String user = usuario.getText().toString();
         String pass = clave.getText().toString();
-        if (user.equals("jose") && pass.equals("1234")){
-            Toast.makeText(getApplicationContext(), "Datos correctos", Toast.LENGTH_LONG).show();
+        if (user.equals(usuario.) && pass.equals("1234")){
+            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
         }else {
             Toast.makeText(getApplicationContext(), "Datos incorrectos", Toast.LENGTH_LONG).show();
         }
