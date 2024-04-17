@@ -18,8 +18,7 @@ public class DashboardActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         userName.setText(bundle.getString("user"));
 
-        Usuario usuario = new Usuario("jose","josefervalencia@gmail.com");
-        usuario.save();
+
 
 
     }

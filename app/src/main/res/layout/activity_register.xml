@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.120000005" />
 
     <EditText
-        android:id="@+id/imputUserName"
+        android:id="@+id/imputEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -43,12 +43,27 @@
         android:drawableStart="@drawable/ic_email_24"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="user name or email"
+        android:hint="email"
         android:inputType="text"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <EditText
+        android:id="@+id/inputUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_border"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/imputEmail"
+        app:layout_constraintStart_toStartOf="@+id/imputEmail"
+        app:layout_constraintTop_toBottomOf="@+id/imputEmail" />
 
     <EditText
         android:id="@+id/inputPassword"
@@ -60,33 +75,34 @@
         android:drawablePadding="16dp"
         android:ems="10"
         android:hint="password"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/imputUserName"
-        app:layout_constraintStart_toStartOf="@+id/imputUserName"
-        app:layout_constraintTop_toBottomOf="@+id/imputUserName" />
+        app:layout_constraintEnd_toEndOf="@+id/inputUserName"
+        app:layout_constraintStart_toStartOf="@+id/inputUserName"
+        app:layout_constraintTop_toBottomOf="@+id/inputUserName" />
+
 
     <EditText
         android:id="@+id/inputConfirmPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_lock_24"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Confirm password"
-        android:inputType="text"
+        android:hint="confirm password"
+        android:inputType="textPassword"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+        app:layout_constraintTop_toTopOf="@+id/inputPassword" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/button_background"
         android:text="Register"
         android:textColor="@color/white"
@@ -94,13 +110,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/inputConfirmPassword"
         app:layout_constraintStart_toStartOf="@+id/inputConfirmPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword" />
+        app:layout_constraintTop_toTopOf="@+id/inputConfirmPassword" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Already Have Account?"
+        android:id="@+id/loguinRedirectText"
+        android:layout_marginTop="8dp"
+        android:text="Already Have Account? Login"
         android:textAlignment="center"
         android:textColor="@color/startColor"
         android:textSize="16sp"

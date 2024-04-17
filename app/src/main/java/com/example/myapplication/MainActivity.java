@@ -2,44 +2,60 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.databinding.ActivityMainBinding;
+
+
 public class MainActivity extends AppCompatActivity {
-    private Button btnRegister, btntxt_login;
-    private EditText usuario, clave;
+   ActivityMainBinding binding;
+   DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        usuario = findViewById(R.id.edUserName);
-        clave = findViewById(R.id.edPassword);
+        databaseHelper = new DatabaseHelper(this);
 
-        btnRegister = findViewById(R.id.btnRegister);
-        btntxt_login = findViewById(R.id.button2);
+        binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = binding.edUserName.getText().toString();
+                String password = binding.edPassword.getText().toString();
+
+                if (email.equals("") || password.equals("")){
+                    Toast.makeText(MainActivity.this, "Todos los campos son requeridos", Toast.LENGTH_LONG).show();
+                }else {
+
+                    Boolean checkCredentials = databaseHelper.checkEmailPassword(email,password);
+
+                    if (checkCredentials == true ){
+                        Toast.makeText(MainActivity.this, "Login Exitoso", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(MainActivity.this, "Datos Incorrectos", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
+
+        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    public void Registrar(View view){
-        Toast.makeText(getApplicationContext(), "Abriendo registro de usuario...", Toast.LENGTH_LONG).show();
-        Intent i = new Intent(MainActivity.this, RegisterActivity.class);
-        startActivity(i);
-    }
 
-    public void Ingresar(View view){
-        String user = usuario.getText().toString();
-        String pass = clave.getText().toString();
-        if (user.equals(usuario.) && pass.equals("1234")){
-            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-            intent.putExtra("user", user);
-            startActivity(intent);
-        }else {
-            Toast.makeText(getApplicationContext(), "Datos incorrectos", Toast.LENGTH_LONG).show();
-        }
-    }
+
+
 }
